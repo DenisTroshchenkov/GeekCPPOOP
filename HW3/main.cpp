@@ -242,14 +242,14 @@ bool operator<= (const SimpleFraction &s_f1, const SimpleFraction &s_f2) {
 
 MixedFraction operator+ (const MixedFraction &m_f1, const MixedFraction &m_f2) {
     int lcm = find_lcm(m_f1.m_denominator, m_f2.m_denominator);
-    int num =( (m_f1.m_whole * m_f1.m_denominator) + m_f1.m_numerator*(lcm / m_f1.m_denominator) + (m_f2.m_whole * m_f2.m_denominator) + m_f2.m_numerator*(lcm / m_f2.m_denominator));
+    int num =( ((m_f1.m_whole * m_f1.m_denominator) + m_f1.m_numerator)*(lcm / m_f1.m_denominator) + ((m_f2.m_whole * m_f2.m_denominator) + m_f2.m_numerator)*(lcm / m_f2.m_denominator));
     int whole = get_int_part(num, lcm);
     return MixedFraction(whole, num, lcm);
 }
 
 MixedFraction operator- (const MixedFraction &m_f1, const MixedFraction &m_f2) {
     int lcm = find_lcm(m_f1.m_denominator, m_f2.m_denominator);
-    int num =( (m_f1.m_whole * m_f1.m_denominator ) + m_f1.m_numerator*(lcm / m_f1.m_denominator) - (m_f2.m_whole * m_f1.m_denominator) + m_f2.m_numerator*(lcm / m_f2.m_denominator));
+    int num =( ((m_f1.m_whole * m_f1.m_denominator ) + m_f1.m_numerator )*(lcm / m_f1.m_denominator) - ((m_f2.m_whole * m_f1.m_denominator) + m_f2.m_numerator)*(lcm / m_f2.m_denominator));
     int whole = get_int_part(num, lcm);
     return MixedFraction(whole, num, lcm);
 }
